@@ -1,0 +1,189 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=800">
+    <meta name="description" content="Purge File Maker - Generate custom color pattern files to clean and maintain your inkjet printer's nozzles on macOS.">
+    <title>Purge File Maker - Clean Your Inkjet Printer Nozzles</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow-x: auto; /* 允许横向滚动条如果窗口小于内容宽度 */
+            background: #f7fafc; /* 浅灰色背景，干净清爽 */
+            min-height: 100vh;
+        }
+        .fixed-container {
+            width: 800px; /* 固定宽度 800px */
+            margin-left: auto;
+            margin-right: auto;
+            box-sizing: border-box;
+        }
+        /* 移除任何响应式调整，确保布局固定 */
+        .fixed-container * {
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        /* 内容区域白色背景 */
+        .content-section {
+            background: white;
+            border-radius: 8px;
+            padding: 16px;
+        }
+        /* 卡片保持白色背景 */
+        .card {
+            background: white;
+            border-radius: 8px;
+        }
+        /* 彩色条纹替换Hero部分的图片 */
+        .color-stripes {
+            width: 400px; /* 调整为400px，与左侧对齐 */
+            height: 225px;
+            background: repeating-linear-gradient(
+                45deg,
+                #ff0000 0px, /* 红 */
+                #ff0000 40px, /* 每条宽度40px，适合400px区域 */
+                #ff9900 40px, /* 橙 */
+                #ff9900 80px,
+                #ffff00 80px, /* 黄 */
+                #ffff00 120px,
+                #00ff00 120px, /* 绿 */
+                #00ff00 160px,
+                #0000ff 160px, /* 蓝 */
+                #0000ff 200px,
+                #9900ff 200px, /* 紫 */
+                #9900ff 240px
+            );
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 与原图片阴影一致 */
+        }
+    </style>
+</head>
+<body class="font-sans">
+    <!-- Header Section -->
+    <header class="bg-blue-600 text-white py-6 content-section">
+        <div class="fixed-container text-center">
+            <h1 class="text-3xl font-bold">Purge File Maker</h1>
+            <p class="mt-2 text-base">Keep your inkjet printer's nozzles clean with custom color pattern files</p>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-12 content-section">
+        <div class="fixed-container flex items-center">
+            <div class="w-1/2 pr-4">
+                <h2 class="text-2xl font-semibold mb-4">Maintain Your Printer with Ease</h2>
+                <p class="text-gray-700 mb-6 text-sm">Purge File Maker is a macOS app designed to generate custom color pattern files to clean and maintain your inkjet printer’s nozzles, ensuring vibrant prints and prolonged printer life.</p>
+                <a href="https://github.com/simonwan1980/Purge-File-Maker/releases/download/v1.1/Purge.File.Maker.dmg" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition inline-block text-sm">Download Now</a>
+            </div>
+            <div class="w-1/2">
+                <div class="color-stripes"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-12 content-section">
+        <div class="fixed-container">
+            <h2 class="text-2xl font-semibold text-center mb-8">Why Choose Purge File Maker?</h2>
+            <div class="flex justify-between gap-4">
+                <div class="card p-4 shadow-md text-center w-1/3">
+                    <h3 class="text-lg font-semibold mb-2">Custom Patterns</h3>
+                    <p class="text-gray-600 text-sm">Create tailored color patterns to effectively clean your printer’s nozzles.</p>
+                </div>
+                <div class="card p-4 shadow-md text-center w-1/3">
+                    <h3 class="text-lg font-semibold mb-2">User-Friendly Interface</h3>
+                    <p class="text-gray-600 text-sm">Easily generate purge files with a simple and intuitive macOS app.</p>
+                </div>
+                <div class="card p-4 shadow-md text-center w-1/3">
+                    <h3 class="text-lg font-semibold mb-2">Printer Longevity</h3>
+                    <p class="text-gray-600 text-sm">Regular maintenance with Purge File Maker extends your printer’s lifespan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="py-12 content-section">
+        <div class="fixed-container">
+            <h2 class="text-2xl font-semibold text-center mb-8">How It Works</h2>
+            <div class="flex justify-between gap-4">
+                <div class="card p-4 text-center w-1/3">
+                    <div class="text-3xl font-bold text-blue-600 mb-2">1</div>
+                    <h3 class="text-lg font-semibold mb-2">Select Your Colors</h3>
+                    <p class="text-gray-600 text-sm">Choose the color patterns needed for your printer’s cleaning cycle.</p>
+                </div>
+                <div class="card p-4 text-center w-1/3">
+                    <div class="text-3xl font-bold text-blue-600 mb-2">2</div>
+                    <h3 class="text-lg font-semibold mb-2">Generate Purge File</h3>
+                    <p class="text-gray-600 text-sm">Create a custom file with a single click, tailored to your printer.</p>
+                </div>
+                <div class="card p-4 text-center w-1/3">
+                    <div class="text-3xl font-bold text-blue-600 mb-2">3</div>
+                    <h3 class="text-lg font-semibold mb-2">Print & Clean</h3>
+                    <p class="text-gray-600 text-sm">Print the file to clean your nozzles and maintain print quality.<sup>*</sup></p>
+                </div>
+            </div>
+            <p class="text-xs text-gray-500 mt-4 text-center"><sup>*</sup>Works with <a href="https://simonwan1980.github.io/nozzleclogfree/" class="text-blue-600 hover:underline">NozzleClogFree</a> to automatically perform regular printing.</p>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="bg-blue-600 text-white py-12 content-section">
+        <div class="fixed-container text-center">
+            <h2 class="text-2xl font-semibold mb-4">Get Purge File Maker Today</h2>
+            <p class="mb-6 text-sm">Available exclusively for macOS. Start maintaining your inkjet printer now!</p>
+            <a href="https://github.com/simonwan1980/Purge-File-Maker/releases/download/v1.1/Purge.File.Maker.dmg" class="bg-white text-blue-600 px-4 py-2 rounded-lg hover:bg-gray-200 transition inline-block text-sm">Download for macOS</a>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-white py-6 content-section">
+        <div class="fixed-container text-center">
+            <p class="text-sm">© 2025 Purge File Maker. All rights reserved.</p>
+            <div class="mt-4">
+                <a href="https://github.com/simonwan1980/Purge-File-Maker" class="text-gray-400 hover:text-white mx-2 text-sm">Purge File Maker Source Code</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
