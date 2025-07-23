@@ -96,6 +96,38 @@
     .cmyk-bar .green { background-color: #00FF00; }
     .cmyk-bar .blue { background-color: #0000FF; }
     .cmyk-bar .orange { background-color: #FF9900; }
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 20px;
+      margin: 20px 0;
+    }
+    .color-item {
+      text-align: center;
+    }
+    .color-swatch {
+      width: 50%;
+      height: 100px;
+      margin: 10px auto;
+      border: 1px solid #eee;
+    }
+    .color-name {
+      font-weight: bold;
+      margin-bottom: 5px;
+      font-size: 0.7em;
+    }
+    .color-name a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .color-name a:hover {
+      text-decoration: underline;
+    }
+    .color-hex {
+      color: #666;
+      font-size: 0.5em;
+    }
     .cta {
       text-align: center;
       margin-top: 40px;
@@ -173,6 +205,107 @@
     <section>
       <h2>Choose the Right Maintenance File</h2>
       <ul>
+        <li class="color-bar-item">
+          <div class="color-bar-text">
+            <strong>Single Color Purge File:</strong><br>
+          </div>
+          <div class="color-grid">
+            <!-- Row 1 -->
+            <div class="color-item">
+              <div class="color-name"><a href="https://drive.google.com/file/d/11Q59HYRj8Ji5zkedRIdb3PY3eKx4gRJm/view?usp=sharing">Black</a></div>
+              <div class="color-swatch" style="background-color: #000000;"></div>
+              <div class="color-hex">(Hex Value: #000000)</div>
+            </div>
+            <div class="color-item">
+              <div class="color-name"><a href="https://drive.google.com/file/d/11_Owhv0vW9zysneW3xrqDoY36Vayk1zX/view?usp=sharing">Cyan</a></div>
+              <div class="color-swatch" style="background-color: #00ffff;"></div>
+              <div class="color-hex">(Hex Value: #00ffff)</div>
+            </div>
+            <div class="color-item">
+              <div class="color-name"><a href="https://drive.google.com/file/d/11VAVwumY2iO9AMCEt5IDVKYJPut1vmM_/view?usp=sharing">Yellow</a></div>
+              <div class="color-swatch" style="background-color: #ffff00;"></div>
+              <div class="color-hex">(Hex Value: #ffff00)</div>
+            </div>
+            <div class="color-item">
+              <div class="color-name"><a href="https://drive.google.com/file/d/118HWWqWlBALAcQQGDHoQEvjGqT3DtVFF/view?usp=sharing">Magenta</a></div>
+              <div class="color-swatch" style="background-color: #ff00ff;"></div>
+              <div class="color-hex">(Hex Value: #ff00ff)</div>
+            </div>
+            <div class="color-item">
+              <div class="color-name"><a href="https://drive.google.com/file/d/11c0ARLwnxEJV-IYxolS6eRiK_ncsvCum/view?usp=sharing">Light Cyan</a></div>
+              <div class="color-swatch" style="background-color: #80ffff;"></div>
+              <div class="color-hex">(Hex Value: #80ffff)</div>
+            </div>
+            <div class="color-item">
+              <div class="color-name"><a href="https://drive.google.com/file/d/11XZDfaOK7CtNV9pwrumYD9dgsbpKZWsI/view?usp=sharing">Light Magenta</a></div>
+              <div class="color-swatch" style="background-color: #ff80ff;"></div>
+              <div class="color-hex">(Hex Value: #ff80ff)</div>
+            </div>
+            <!-- Row 2 -->
+            <div class="color-item">
+              <div class="color-name"><a href="https://drive.google.com/file/d/11AMCWi9XS_Zqpx_m1D_WG-fL_kBToflV/view?usp=sharing">Light Black</a></div>
+              <div class="color-swatch" style="background-color: #808080;"></div>
+              <div class="color-hex">(Hex Value: #808080)</div>
+            </div>
+            <div class="color-item">
+              <div class="color-name"><a href="https://drive.google.com/file/d/11S_ZH2L6vEXtWrG5gbu2Vf5acwuyctxS/view?usp=sharing">Light Light Black</a></div>
+              <div class="color-swatch" style="background-color: #c6c6c6;"></div>
+              <div class="color-hex">(Hex Value: #c6c6c6)</div>
+            </div>
+            <div class="color-item">
+              <div class="color-name"><a href="https://drive.google.com/file/d/11r34T6pE1Vy9JFBtLVKek6yGDWY_1T6R/view?usp=sharing">Light Vivid Magenta</a></div>
+              <div class="color-swatch" style="background-color: #ff80ff;"></div>
+              <div class="color-hex">(Hex Value: #ff80ff)</div>
+            </div>
+            <div class="color-item">
+              <div class="color-name"><a href="https://drive.google.com/file/d/11oybGG6B3m702IRoIn0ExTddyzd7V1CT/view?usp=sharing">Photo Black</a></div>
+              <div class="color-swatch" style="background-color: #000000;"></div>
+              <div class="color-hex">(Hex Value: #000000)</div>
+            </div>
+            <div class="color-item">
+              <div class="color-name"><a href="https://drive.google.com/file/d/11pM36DtOK2hpOahZya7nJgYkTb6S7lcv/view?usp=sharing">Green</a></div>
+              <div class="color-swatch" style="background-color: #008000;"></div>
+              <div class="color-hex">(Hex Value: #008000)</div>
+            </div>
+            <div class="color-item">
+              <div class="color-name"><a href="https://drive.google.com/file/d/11r1R5mYdHOclJMxOw4QSIiM3dH4njwJB/view?usp=sharing">Orange</a></div>
+              <div class="color-swatch" style="background-color: #ffa500;"></div>
+              <div class="color-hex">(Hex Value: #ffa500)</div>
+            </div>
+            <!-- Row 3 -->
+            <div class="color-item">
+              <div class="color-name"><a href="https://drive.google.com/file/d/11lAqMl6-qpAahg0gwQzhEEfLi-Q7OLCw/view?usp=sharing">Photo Grey</a></div>
+              <div class="color-swatch" style="background-color: #c6c6c6;"></div>
+              <div class="color-hex">(Hex Value: #c6c6c6)</div>
+            </div>
+            <div class="color-item">
+              <div class="color-name"><a href="https://drive.google.com/file/d/11obvI0qCgYKFjML6GcpQwe-MY5CEak82/view?usp=sharing">Grey</a></div>
+              <div class="color-swatch" style="background-color: #808080;"></div>
+              <div class="color-hex">(Hex Value: #808080)</div>
+            </div>
+            <div class="color-item">
+              <div class="color-name"><a href="https://drive.google.com/file/d/11oFe89R_9Tuyay1YZhbTGTn4jqxza8Z0/view?usp=sharing">Blue</a></div>
+              <div class="color-swatch" style="background-color: #0000FF;"></div>
+              <div class="color-hex">(Hex Value: #0000FF)</div>
+            </div>
+            <div class="color-item">
+              <div class="color-name"><a href="https://drive.google.com/file/d/11YfLw3QgI4tbjU-Nqju0Q6S5TJp6c7p-/view?usp=sharing">Red</a></div>
+              <div class="color-swatch" style="background-color: #FF0000;"></div>
+              <div class="color-hex">(Hex Value: #FF0000)</div>
+            </div>
+            <div class="color-item">
+              <div class="color-name"><a href="https://drive.google.com/file/d/11A5ahC5m_gZnLObmQau0M2OeOmxihPy1/view?usp=sharing">Vivid Magenta</a></div>
+              <div class="color-swatch" style="background-color: #ff00ff;"></div>
+              <div class="color-hex">(Hex Value: #ff00ff)</div>
+            </div>
+            <div class="color-item">
+              <div class="color-name"><a href="https://drive.google.com/file/d/11idkJfBq2PY2PPRD10GHzWu3Ofa9cYzq/view?usp=sharing">Photo Magenta</a></div>
+              <div class="color-swatch" style="background-color: #ff80ff;"></div>
+              <div class="color-hex">(Hex Value: #ff80ff)</div>
+            </div>
+          </div>
+          
+        </li>
         <li class="color-bar-item">
           <div class="color-bar-text">
             <strong>Standard 4-Color Printers (CMYK):</strong><br>
